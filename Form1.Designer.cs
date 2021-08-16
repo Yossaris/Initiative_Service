@@ -30,17 +30,16 @@ namespace Initiative_Service
         private void InitializeComponent()
         {
             this.dataGridViewMain = new System.Windows.Forms.DataGridView();
-            this.buttonRoll = new System.Windows.Forms.Button();
-            this.buttonOrder = new System.Windows.Forms.Button();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iniBonus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roll = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonRoll = new System.Windows.Forms.Button();
+            this.buttonOrder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewMain
             // 
-            this.dataGridViewMain.AllowUserToOrderColumns = true;
             this.dataGridViewMain.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -48,29 +47,12 @@ namespace Initiative_Service
             this.iniBonus,
             this.roll});
             this.dataGridViewMain.Location = new System.Drawing.Point(12, 37);
+            this.dataGridViewMain.MultiSelect = false;
             this.dataGridViewMain.Name = "dataGridViewMain";
             this.dataGridViewMain.RowHeadersWidth = 51;
             this.dataGridViewMain.RowTemplate.Height = 29;
             this.dataGridViewMain.Size = new System.Drawing.Size(795, 379);
             this.dataGridViewMain.TabIndex = 0;
-            // 
-            // buttonRoll
-            // 
-            this.buttonRoll.Location = new System.Drawing.Point(713, 431);
-            this.buttonRoll.Name = "buttonRoll";
-            this.buttonRoll.Size = new System.Drawing.Size(94, 29);
-            this.buttonRoll.TabIndex = 1;
-            this.buttonRoll.Text = "Roll";
-            this.buttonRoll.UseVisualStyleBackColor = true;
-            // 
-            // buttonOrder
-            // 
-            this.buttonOrder.Location = new System.Drawing.Point(613, 431);
-            this.buttonOrder.Name = "buttonOrder";
-            this.buttonOrder.Size = new System.Drawing.Size(94, 29);
-            this.buttonOrder.TabIndex = 2;
-            this.buttonOrder.Text = "Order";
-            this.buttonOrder.UseVisualStyleBackColor = true;
             // 
             // name
             // 
@@ -92,6 +74,25 @@ namespace Initiative_Service
             this.roll.HeaderText = "Roll";
             this.roll.MinimumWidth = 6;
             this.roll.Name = "roll";
+            // 
+            // buttonRoll
+            // 
+            this.buttonRoll.Location = new System.Drawing.Point(713, 431);
+            this.buttonRoll.Name = "buttonRoll";
+            this.buttonRoll.Size = new System.Drawing.Size(94, 29);
+            this.buttonRoll.TabIndex = 1;
+            this.buttonRoll.Text = "Roll";
+            this.buttonRoll.UseVisualStyleBackColor = true;
+            this.buttonRoll.Click += new System.EventHandler(this.buttonRoll_Click);
+            // 
+            // buttonOrder
+            // 
+            this.buttonOrder.Location = new System.Drawing.Point(613, 431);
+            this.buttonOrder.Name = "buttonOrder";
+            this.buttonOrder.Size = new System.Drawing.Size(94, 29);
+            this.buttonOrder.TabIndex = 2;
+            this.buttonOrder.Text = "Order";
+            this.buttonOrder.UseVisualStyleBackColor = true;
             // 
             // mainWindow
             // 

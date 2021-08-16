@@ -21,9 +21,7 @@ namespace Initiative_Service
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new mainWindow());
-            var Name = new List<string> {"Bharmir", "Jennifer", "Caedwyth", "Leygolass", "Malon" };
-            var IniBonus = new List<int> { -1, 3, 0, 3, 0 };
-            var Roll = new List<int> { };
+
             
         }
         

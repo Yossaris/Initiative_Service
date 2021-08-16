@@ -12,96 +12,74 @@ namespace Initiative_Service
 {
     public partial class mainWindow : Form
     {
-        private BindingSource characters = new BindingSource();
-
-        private class Character
-        {
-            private string characterName;
-            private int bonus;
-            private int d20Roll;
-
-
-            public Character(string name, int iniBonus, int roll)
-            {
-
-                characterName = name;
-                bonus = iniBonus;
-                d20Roll = roll;
-
-            }
-
-            public string name
-            {
-                get
-                {
-                    return characterName;
-                }
-
-                set
-                {
-                    characterName = value;
-                }
-            }
-
-            public int iniBonus
-            {
-                get
-                {
-                    return bonus;
-                }
-                set
-                {
-                    bonus = value;
-                }
-            }
-
-            public int roll
-            {
-                get
-                {
-                    return d20Roll;
-                }
-                set
-                {
-                    d20Roll = value;
-                }
-            }
-
-
-        }
+        DataTable characters = new DataTable();
+        DataColumn column;
+        DataRow row;
+        DataView view;
 
         public mainWindow()
         {
             InitializeComponent();
-            characters.Add(new Character("Bharmir", -1, 1));
-            characters.Add(new Character("Leygolass", 3, 1));
-            characters.Add(new Character("Jennifer", 3, 1));
-            characters.Add(new Character("Caedwyth", 0, 1));
-            characters.Add(new Character("Malon", 0, 1));
-
-            
-            dataGridViewMain.AutoGenerateColumns = false;
-            dataGridViewMain.DataSource = characters;
 
 
-            // Initialize and add a text box column.
-            //DataGridViewColumn columnName = new DataGridViewTextBoxColumn();
-            //columnName.DataPropertyName = "name";
-            //columnName.Name = "Name";
-            //dataGridViewMain.Columns.Add(columnName);
 
-            //DataGridViewColumn columnBonus = new DataGridViewTextBoxColumn();
-            //columnBonus.DataPropertyName = "iniBonus";
-            //columnBonus.Name = "Ini Bonus";
-            //dataGridViewMain.Columns.Add(columnBonus);
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "Name";
+            characters.Columns.Add(column);
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Int32");
+            column.ColumnName = "iniBonus";
+            characters.Columns.Add(column);
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Int32");
+            column.ColumnName = "Roll";
+            characters.Columns.Add(column);
 
-            //DataGridViewColumn columnRoll = new DataGridViewTextBoxColumn();
-            //columnRoll.DataPropertyName = "roll";
-            //columnRoll.Name = "Roll";
-            //dataGridViewMain.Columns.Add(columnRoll);
+            row = characters.NewRow();
+            row["Name"] = "Bharmir";
+            row["iniBonus"] = -1;
+            row["Roll"] = 0;
+            characters.Rows.Add(row);
+            row = characters.NewRow();
+            row["Name"] = "Leygolass";
+            row["iniBonus"] = 3;
+            row["Roll"] = 0;
+            characters.Rows.Add(row);
+            row = characters.NewRow();
+            row["Name"] = "Jennifer";
+            row["iniBonus"] = 3;
+            row["Roll"] = 0;
+            characters.Rows.Add(row);
+            row = characters.NewRow();
+            row["Name"] = "Caedwyth";
+            row["iniBonus"] = 0;
+            row["Roll"] = 0;
+            characters.Rows.Add(row);
+            row = characters.NewRow();
+            row["Name"] = "Malon";
+            row["iniBonus"] = 0;
+            row["Roll"] = 0;
+            characters.Rows.Add(row);
+
+            view = new DataView(characters);
+            dataGridViewMain.DataSource = view;
+
 
         }
- 
-        
+
+        private void buttonRoll_Click(object sender, EventArgs e)
+        {
+            Random d20 = new Random();
+            int i = 0;
+            foreach (DataRow row  in characters.Rows)
+            {
+               
+                int rolled = d20.Next(1, 20);
+                int initiative = characters.Rows[i].Field<int>("iniBonus");
+                row["Roll"] = (rolled + initiative);
+                i++;
+            }
+        }
     }
 }
