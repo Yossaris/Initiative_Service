@@ -40,6 +40,9 @@ namespace Initiative_Service
             // 
             // dataGridViewMain
             // 
+            this.dataGridViewMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewMain.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -77,6 +80,7 @@ namespace Initiative_Service
             // 
             // buttonRoll
             // 
+            this.buttonRoll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonRoll.Location = new System.Drawing.Point(713, 431);
             this.buttonRoll.Name = "buttonRoll";
             this.buttonRoll.Size = new System.Drawing.Size(94, 29);
@@ -87,6 +91,7 @@ namespace Initiative_Service
             // 
             // buttonOrder
             // 
+            this.buttonOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonOrder.Location = new System.Drawing.Point(613, 431);
             this.buttonOrder.Name = "buttonOrder";
             this.buttonOrder.Size = new System.Drawing.Size(94, 29);
