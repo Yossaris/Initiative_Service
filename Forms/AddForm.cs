@@ -84,7 +84,7 @@ namespace Initiative_Service
                 
             }
             SendDataTable(addedToInitiative);
-            addCount++;
+            addCount= addCount + dataGridViewAdd.SelectedRows.Count;
         }
 
         public DataTable SendDataTable(DataTable dt)
