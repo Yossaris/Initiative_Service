@@ -101,5 +101,20 @@ namespace Initiative_Service
                 initiativeOrder.Rows.Add(Row);
             }
         }
+
+        private void buttonFoe_Click(object sender, EventArgs e)
+        {
+            ally = false;
+            DataRow Row;
+            var addDialog = new AddForm(ally);
+            var dialogResult = addDialog.ShowDialog();
+            foreach (DataRow row in addDialog.addedToInitiative.Rows)
+            {
+                Row = initiativeOrder.NewRow();
+                Row["Name"] = row["name"];
+                Row["iniBonus"] = row["iniBonus"];
+                initiativeOrder.Rows.Add(Row);
+            }
+        }
     }
 }

@@ -132,6 +132,7 @@ namespace Initiative_Service
             this.buttonFoe.TabIndex = 5;
             this.buttonFoe.Text = "Add Foe";
             this.buttonFoe.UseVisualStyleBackColor = true;
+            this.buttonFoe.Click += new System.EventHandler(this.buttonFoe_Click);
             // 
             // mainWindow
             // 
