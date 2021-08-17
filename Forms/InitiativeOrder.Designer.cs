@@ -34,7 +34,10 @@ namespace Initiative_Service
             this.iniBonus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roll = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonRoll = new System.Windows.Forms.Button();
-            this.buttonOrder = new System.Windows.Forms.Button();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.buttonAlly = new System.Windows.Forms.Button();
+            this.buttonFoe = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,12 +52,13 @@ namespace Initiative_Service
             this.name,
             this.iniBonus,
             this.roll});
-            this.dataGridViewMain.Location = new System.Drawing.Point(12, 37);
+            this.dataGridViewMain.Location = new System.Drawing.Point(10, 28);
+            this.dataGridViewMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewMain.MultiSelect = false;
             this.dataGridViewMain.Name = "dataGridViewMain";
             this.dataGridViewMain.RowHeadersWidth = 51;
             this.dataGridViewMain.RowTemplate.Height = 29;
-            this.dataGridViewMain.Size = new System.Drawing.Size(795, 379);
+            this.dataGridViewMain.Size = new System.Drawing.Size(696, 284);
             this.dataGridViewMain.TabIndex = 0;
             // 
             // name
@@ -81,36 +85,72 @@ namespace Initiative_Service
             // buttonRoll
             // 
             this.buttonRoll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonRoll.Location = new System.Drawing.Point(713, 431);
+            this.buttonRoll.Location = new System.Drawing.Point(624, 323);
+            this.buttonRoll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonRoll.Name = "buttonRoll";
-            this.buttonRoll.Size = new System.Drawing.Size(94, 29);
+            this.buttonRoll.Size = new System.Drawing.Size(82, 22);
             this.buttonRoll.TabIndex = 1;
             this.buttonRoll.Text = "Roll";
             this.buttonRoll.UseVisualStyleBackColor = true;
             this.buttonRoll.Click += new System.EventHandler(this.buttonRoll_Click);
             // 
-            // buttonOrder
+            // buttonClear
             // 
-            this.buttonOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonOrder.Location = new System.Drawing.Point(613, 431);
-            this.buttonOrder.Name = "buttonOrder";
-            this.buttonOrder.Size = new System.Drawing.Size(94, 29);
-            this.buttonOrder.TabIndex = 2;
-            this.buttonOrder.Text = "Order";
-            this.buttonOrder.UseVisualStyleBackColor = true;
+            this.buttonClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClear.Location = new System.Drawing.Point(536, 323);
+            this.buttonClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(82, 22);
+            this.buttonClear.TabIndex = 2;
+            this.buttonClear.Text = "Clear";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(717, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // buttonAlly
+            // 
+            this.buttonAlly.Location = new System.Drawing.Point(13, 321);
+            this.buttonAlly.Name = "buttonAlly";
+            this.buttonAlly.Size = new System.Drawing.Size(75, 23);
+            this.buttonAlly.TabIndex = 4;
+            this.buttonAlly.Text = "Add Ally";
+            this.buttonAlly.UseVisualStyleBackColor = true;
+            this.buttonAlly.Click += new System.EventHandler(this.buttonAlly_Click);
+            // 
+            // buttonFoe
+            // 
+            this.buttonFoe.Location = new System.Drawing.Point(94, 321);
+            this.buttonFoe.Name = "buttonFoe";
+            this.buttonFoe.Size = new System.Drawing.Size(75, 23);
+            this.buttonFoe.TabIndex = 5;
+            this.buttonFoe.Text = "Add Foe";
+            this.buttonFoe.UseVisualStyleBackColor = true;
             // 
             // mainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 472);
-            this.Controls.Add(this.buttonOrder);
+            this.ClientSize = new System.Drawing.Size(717, 354);
+            this.Controls.Add(this.buttonFoe);
+            this.Controls.Add(this.buttonAlly);
+            this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonRoll);
             this.Controls.Add(this.dataGridViewMain);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "mainWindow";
             this.Text = "Initiative";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -118,10 +158,13 @@ namespace Initiative_Service
 
         private System.Windows.Forms.DataGridView dataGridViewMain;
         private System.Windows.Forms.Button buttonRoll;
-        private System.Windows.Forms.Button buttonOrder;
+        private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn iniBonus;
         private System.Windows.Forms.DataGridViewTextBoxColumn roll;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.Button buttonAlly;
+        private System.Windows.Forms.Button buttonFoe;
     }
 }
 
