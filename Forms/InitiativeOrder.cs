@@ -90,10 +90,16 @@ namespace Initiative_Service
         private void buttonAlly_Click(object sender, EventArgs e)
         {
             ally = true;
-            
+            DataRow Row;
             var addDialog = new AddForm(ally);
             var dialogResult = addDialog.ShowDialog();
-            
+            foreach (DataRow row in addDialog.addedToInitiative.Rows)
+            {
+                Row = initiativeOrder.NewRow();
+                Row["Name"] = row["name"];
+                Row["iniBonus"] = row["iniBonus"];
+                initiativeOrder.Rows.Add(Row);
+            }
         }
     }
 }

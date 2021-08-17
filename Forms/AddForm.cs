@@ -81,9 +81,15 @@ namespace Initiative_Service
                     addedToInitiative.Rows[i+addCount][j] = dataGridViewAdd.SelectedRows[i].Cells[j].Value;
                     //^^^^^^^^^^^
                 }
-                addCount++;
+                
             }
-            
+            SendDataTable(addedToInitiative);
+            addCount++;
+        }
+
+        public DataTable SendDataTable(DataTable dt)
+        {
+            return addedToInitiative;
         }
     }
 }
