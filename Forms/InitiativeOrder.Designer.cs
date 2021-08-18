@@ -59,7 +59,7 @@ namespace Initiative_Service
             this.dataGridViewMain.Name = "dataGridViewMain";
             this.dataGridViewMain.RowHeadersWidth = 51;
             this.dataGridViewMain.RowTemplate.Height = 29;
-            this.dataGridViewMain.Size = new System.Drawing.Size(696, 284);
+            this.dataGridViewMain.Size = new System.Drawing.Size(616, 341);
             this.dataGridViewMain.TabIndex = 0;
             // 
             // name
@@ -86,10 +86,10 @@ namespace Initiative_Service
             // buttonRoll
             // 
             this.buttonRoll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonRoll.Location = new System.Drawing.Point(624, 323);
+            this.buttonRoll.Location = new System.Drawing.Point(551, 378);
             this.buttonRoll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonRoll.Name = "buttonRoll";
-            this.buttonRoll.Size = new System.Drawing.Size(82, 22);
+            this.buttonRoll.Size = new System.Drawing.Size(75, 23);
             this.buttonRoll.TabIndex = 1;
             this.buttonRoll.Text = "Roll";
             this.buttonRoll.UseVisualStyleBackColor = true;
@@ -98,10 +98,10 @@ namespace Initiative_Service
             // buttonClear
             // 
             this.buttonClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonClear.Location = new System.Drawing.Point(536, 323);
+            this.buttonClear.Location = new System.Drawing.Point(470, 378);
             this.buttonClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(82, 22);
+            this.buttonClear.Size = new System.Drawing.Size(75, 23);
             this.buttonClear.TabIndex = 2;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
@@ -111,13 +111,14 @@ namespace Initiative_Service
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(717, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(637, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // buttonAlly
             // 
-            this.buttonAlly.Location = new System.Drawing.Point(13, 321);
+            this.buttonAlly.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonAlly.Location = new System.Drawing.Point(10, 378);
             this.buttonAlly.Name = "buttonAlly";
             this.buttonAlly.Size = new System.Drawing.Size(75, 23);
             this.buttonAlly.TabIndex = 4;
@@ -127,7 +128,8 @@ namespace Initiative_Service
             // 
             // buttonFoe
             // 
-            this.buttonFoe.Location = new System.Drawing.Point(94, 321);
+            this.buttonFoe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonFoe.Location = new System.Drawing.Point(91, 378);
             this.buttonFoe.Name = "buttonFoe";
             this.buttonFoe.Size = new System.Drawing.Size(75, 23);
             this.buttonFoe.TabIndex = 5;
@@ -139,7 +141,7 @@ namespace Initiative_Service
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(717, 354);
+            this.ClientSize = new System.Drawing.Size(637, 411);
             this.Controls.Add(this.buttonFoe);
             this.Controls.Add(this.buttonAlly);
             this.Controls.Add(this.buttonClear);
@@ -149,6 +151,7 @@ namespace Initiative_Service
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(355, 242);
             this.Name = "mainWindow";
             this.Text = "Initiative";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).EndInit();
