@@ -29,6 +29,7 @@ namespace Initiative_Service
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainWindow));
             this.dataGridViewMain = new System.Windows.Forms.DataGridView();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iniBonus = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -145,6 +146,7 @@ namespace Initiative_Service
             this.Controls.Add(this.buttonRoll);
             this.Controls.Add(this.dataGridViewMain);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "mainWindow";

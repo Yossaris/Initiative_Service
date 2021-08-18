@@ -16,8 +16,8 @@ namespace Initiative_Service
     {
         public DataTable addedToInitiative = new DataTable();
         DataTable characterList = new DataTable();
-        DataTable allyList = new DataTable();
-        DataTable foeList = new DataTable();
+        //DataTable allyList = new DataTable();
+        //DataTable foeList = new DataTable();
         DataView view;
         int addCount;
         string? _oldSearch;
@@ -45,7 +45,7 @@ namespace Initiative_Service
                 view = new DataView(characterList);
                 dataGridViewAdd.DataSource = view;
         }
-        public void ParseAllies()
+        public void ParseAllies()  //Parsing Exceltable with the player characters
         {
             ExcelEngine excelEngine = new ExcelEngine();
             IApplication application = excelEngine.Excel;
@@ -57,7 +57,7 @@ namespace Initiative_Service
             characterList = worksheet.ExportDataTable(1, 1, 6, 2, ExcelExportDataTableOptions.ColumnNames);
 
         }
-        public void ParseMonsters()
+        public void ParseMonsters() //Parsing Exceltable with all the official Monsters
         {
 
 
@@ -69,10 +69,8 @@ namespace Initiative_Service
             IWorkbook workbook = application.Workbooks.Open(inputStream);
             IWorksheet worksheet = workbook.Worksheets[0];
             characterList = worksheet.ExportDataTable(1, 1, 429, 2, ExcelExportDataTableOptions.ColumnNames);
-            foreach (DataRow row in characterList.Rows)
+            foreach (DataRow row in characterList.Rows)                                                          //Calculating initiative modifier from dex score
             {
-                //var dex = row["iniBonus"];
-                //if(row["iniBonus"])
 
                 switch (row["iniBonus"])
                 {
@@ -139,7 +137,7 @@ namespace Initiative_Service
                         row["iniBonus"] = 10;
                         break;
                     default:
-                        row["iniBonus"] = "no Initiative";
+                        row["iniBonus"] = "Invalid Initiative";
                         break;
                         
                 }
@@ -161,7 +159,7 @@ namespace Initiative_Service
                 for (int j = 0; j < dataGridViewAdd.Columns.Count; j++)
                 {
                     addedToInitiative.Rows[i+addCount][j] = dataGridViewAdd.SelectedRows[i].Cells[j].Value;
-                    //^^^^^^^^^^^
+                    
                 }
                 
             }

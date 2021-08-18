@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="D&amp;D 5e Monster List with Ability Scores.xlsx" />
+    <None Remove="d20-icon-34414.ico" />
     <None Remove="Player Characters.xlsx" />
   </ItemGroup>
 
