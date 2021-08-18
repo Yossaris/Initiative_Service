@@ -8,101 +8,144 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
+using Syncfusion.XlsIO;
 
 namespace Initiative_Service
 {
     public partial class AddForm : Form
     {
-        public DataTable addedToInitiative = new DataTable(); 
+        public DataTable addedToInitiative = new DataTable();
+        DataTable characterList = new DataTable();
         DataTable allyList = new DataTable();
         DataTable foeList = new DataTable();
-        DataColumn column;
-        DataRow row;
         DataView view;
         int addCount;
+        string? _oldSearch;
+        List<int>? _cells;
+        int _searchIndex;
 
         public AddForm(bool alignment)
         {
             InitializeComponent();
             addCount = 0;
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "Name";
-            allyList.Columns.Add(column);
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.Int32");
-            column.ColumnName = "iniBonus";
-            allyList.Columns.Add(column);
+
             if (alignment == true)
-            {               
-                row = allyList.NewRow();
-                row["Name"] = "Bharmir";
-                row["iniBonus"] = -1;
-                allyList.Rows.Add(row);
+            {
+                ParseAllies();
 
-                row = allyList.NewRow();
-                row["Name"] = "Leygolass";
-                row["iniBonus"] = 3;
-                allyList.Rows.Add(row);
+                //view = new DataView(allyList);
 
-                row = allyList.NewRow();
-                row["Name"] = "Jennifer";
-                row["iniBonus"] = 3;
-                allyList.Rows.Add(row);
-
-                row = allyList.NewRow();
-                row["Name"] = "Caedwyth";
-                row["iniBonus"] = 0;
-                allyList.Rows.Add(row);
-
-                row = allyList.NewRow();
-                row["Name"] = "Malon";
-                row["iniBonus"] = 0;
-                allyList.Rows.Add(row);
-
-                view = new DataView(allyList);
-
-                dataGridViewAdd.DataSource = view;             
+                //dataGridViewAdd.DataSource = view;             
             }
             else
             {
-                foeList = ParseMonsters();
-                view = new DataView(foeList);
+                ParseMonsters();
+
+            }
+                view = new DataView(characterList);
                 dataGridViewAdd.DataSource = view;
-
-            }
         }
-        public DataTable ParseMonsters()
+        public void ParseAllies()
         {
-            int i = 0;
-            string file = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"D&D 5e Monster List with Ability Scores.xlsx");
-            //var file = @"C:\Users\Chris\Desktop\TestSheet.xls";
-            Console.WriteLine(file);
+            ExcelEngine excelEngine = new ExcelEngine();
+            IApplication application = excelEngine.Excel;
+            application.DefaultVersion = ExcelVersion.Xlsx;
 
-            Excel.Application excel = new Excel.Application();
-            Excel.Workbook wkb = excel.Workbooks.Open(file);
+            FileStream inputStream = new FileStream("Player Characters.xlsx", FileMode.Open, FileAccess.Read);
+            IWorkbook workbook = application.Workbooks.Open(inputStream);
+            IWorksheet worksheet = workbook.Worksheets[0];
+            characterList = worksheet.ExportDataTable(1, 1, 6, 2, ExcelExportDataTableOptions.ColumnNames);
 
-            Excel.Worksheet sheet = wkb.Sheets[1] as Excel.Worksheet;
+        }
+        public void ParseMonsters()
+        {
 
-            Excel.Range range1 = sheet.get_Range("A2", Missing.Value);
-            Excel.Range range2 = sheet.get_Range("B2", Missing.Value);
 
-            
-            foreach (Excel.Range r in range1)
+            ExcelEngine excelEngine = new ExcelEngine();
+            IApplication application = excelEngine.Excel;
+            application.DefaultVersion = ExcelVersion.Xlsx;
+
+            FileStream inputStream = new FileStream("D&D 5e Monster List with Ability Scores.xlsx", FileMode.Open, FileAccess.Read);
+            IWorkbook workbook = application.Workbooks.Open(inputStream);
+            IWorksheet worksheet = workbook.Worksheets[0];
+            characterList = worksheet.ExportDataTable(1, 1, 429, 2, ExcelExportDataTableOptions.ColumnNames);
+            foreach (DataRow row in characterList.Rows)
             {
-                row = foeList.NewRow();
-                row["Name"] = r.Text;
-                foeList.Rows.Add(row);
+                //var dex = row["iniBonus"];
+                //if(row["iniBonus"])
 
-            };
-            foreach (Excel.Range r in range2)
-            {
-                row = foeList.Rows[i];
-                row["iniBonus"] = r.Text;
-                foeList.Rows.Add(row);
-                i++;
+                switch (row["iniBonus"])
+                {
+                    case "1":
+                        row["iniBonus"] = -5;
+                        break;
+                    case "2":
+                    case "3":
+                        row["iniBonus"] = -4;
+                        break;
+                    case "4":
+                    case "5":
+                        row["iniBonus"] = -3;
+                        break;
+                    case "6":
+                    case "7":
+                        row["iniBonus"] = -2;
+                        break;
+                    case "8":
+                    case "9":
+                        row["iniBonus"] = -1;
+                        break;
+                    case "10":
+                    case "11":
+                        row["iniBonus"] = 0;
+                        break;
+                    case "12":
+                    case "13":
+                        row["iniBonus"] = 1;
+                        break;
+                    case "14":
+                    case "15":
+                        row["iniBonus"] = 2;
+                        break;
+                    case "16":
+                    case "17":
+                        row["iniBonus"] = 3;
+                        break;
+                    case "18":
+                    case "19":
+                        row["iniBonus"] = 4;
+                        break;
+                    case "20":
+                    case "21":
+                        row["iniBonus"] = 5;
+                        break;
+                    case "22":
+                    case "23":
+                        row["iniBonus"] = 6;
+                        break;
+                    case "24":
+                    case "25":
+                        row["iniBonus"] = 7;
+                        break;
+                    case "26":
+                    case "27":
+                        row["iniBonus"] = 8;
+                        break;
+                    case "28":
+                    case "29":
+                        row["iniBonus"] = 9;
+                        break;
+                    case "30":
+                        row["iniBonus"] = 10;
+                        break;
+                    default:
+                        row["iniBonus"] = "no Initiative";
+                        break;
+                        
+                }
+                    
             }
-            return foeList;
+
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
@@ -129,6 +172,83 @@ namespace Initiative_Service
         public DataTable SendDataTable(DataTable dt)
         {
             return addedToInitiative;
+        }
+        public List<int> SearchCell(string searchText, DataGridView grid)
+        {
+            var results = new List<int>();
+            try
+            {
+                foreach (DataGridViewRow row in grid.Rows)
+                {
+                    if (row.Cells[0].Value != null && row.Cells[0].Value.ToString().ToLower().Contains(searchText))
+                    {
+                        results.Add(grid.Rows[row.Index].Index);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return results;
+        }
+
+        public int CycleCell(List<int> data, int index)
+        {
+            return data[index];
+        }
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            string searchValue = searchTextBox.Text.ToLower();
+            if (_oldSearch != searchValue)
+            {
+                _cells = SearchCell(searchValue, dataGridViewAdd);
+                if (_cells.Count == 0)
+                {
+                    MessageBox.Show($"\"{searchValue}\" not found.", "Result", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    //searchTextBox.Text = string.Empty;
+                    return;
+                }
+                _searchIndex = 0;
+                _oldSearch = searchValue;
+                dataGridViewAdd.Rows[CycleCell(_cells, _searchIndex)].Selected = true;
+                dataGridViewAdd.CurrentCell = dataGridViewAdd.SelectedRows[0].Cells[0];
+                _searchIndex++;
+                if (_searchIndex == _cells.Count)
+                {
+                    _searchIndex = 0;
+                }
+            }
+            else if (_cells != null)
+            {
+                dataGridViewAdd.Rows[CycleCell(_cells, _searchIndex)].Selected = true;
+                dataGridViewAdd.CurrentCell = dataGridViewAdd.SelectedRows[0].Cells[0];
+                _searchIndex++;
+                if (_searchIndex == _cells.Count)
+                {
+                    _searchIndex = 0;
+                }
+            }
+        }
+
+        private void searchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            searchButton.Enabled = true;
+            if (searchTextBox.Text == string.Empty)
+            {
+                searchButton.Enabled = false;
+            }
+        }
+
+        private void searchTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                searchButton.PerformClick();
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+            }
         }
     }
 }

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="D&amp;D 5e Monster List with Ability Scores.xlsx" />
+    <None Remove="Player Characters.xlsx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +27,13 @@
     <Content Include="D&amp;D 5e Monster List with Ability Scores.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Player Characters.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.XlsIO.WinForms" Version="19.2.0.56" />
   </ItemGroup>
 
 </Project>
